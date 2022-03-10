@@ -1,0 +1,7 @@
+.container {
+	width: calc(min(85vw, var(--max-width)));
+	padding: 2em 2.5em;
+	overflow: hidden;
+	background-color: var(--clr-main);
+	border-radius: var(--br);
+}
