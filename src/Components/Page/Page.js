@@ -1,14 +1,14 @@
 import { useContext } from 'react'
 import { AppContext, REGISTER_PAGE } from '../../Contexts/AppContext'
-import { Login } from '../../Pages/LoginPage/Login'
-import { Register } from '../../Pages/RegisterPage/Register'
+import { LoginPage } from '../../Pages/LoginPage/LoginPage'
+import { RegisterPage } from '../../Pages/RegisterPage/RegisterPage'
 
 export const Page = () => {
 	const { page } = useContext(AppContext)
 
 	if (page === REGISTER_PAGE) {
-		return <Register />
+		return <RegisterPage />
 	}
 
-	return <Login />
+	return <LoginPage />
 }

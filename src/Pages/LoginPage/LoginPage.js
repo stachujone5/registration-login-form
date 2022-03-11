@@ -4,7 +4,7 @@ import { LoginBody } from './LoginBody'
 import { Footer } from '../../Components/Footer/Footer'
 import { REGISTER_PAGE } from '../../Contexts/AppContext'
 
-export const Login = () => {
+export const LoginPage = () => {
 	return (
 		<Container>
 			<Header>Login</Header>

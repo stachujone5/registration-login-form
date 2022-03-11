@@ -3,7 +3,7 @@ import { RegisterBody } from './RegisterBody'
 import { Footer } from '../../Components/Footer/Footer'
 import { Container } from '../../Components/Container/Container'
 
-export const Register = () => {
+export const RegisterPage = () => {
 	return (
 		<Container>
 			<Header>Register</Header>
