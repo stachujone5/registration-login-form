@@ -1,7 +1,7 @@
 import classes from './Container.module.scss'
 
 const Container = ({ children }) => {
-	return <div className={classes.container}>{children}</div>
+	return <main className={classes.container}>{children}</main>
 }
 
 export default Container
