@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { AppContext } from '../../Helpers/AppContext'
-import Container from '../../UI/Container'
-import Button from '../../UI/Button'
+import { AppContext } from '../../Contexts/AppContext'
+import Container from '../../Components/Container/Container'
+import Button from '../../Components/Button/Button'
 import classes from './Welcome.module.scss'
 
 const Welcome = () => {

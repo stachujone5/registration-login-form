@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { AppContext } from '../Helpers/AppContext'
+import { AppContext } from '../../Contexts/AppContext'
 import classes from './Footer.module.scss'
 
 const Footer = ({ infoText, btnText, page }) => {

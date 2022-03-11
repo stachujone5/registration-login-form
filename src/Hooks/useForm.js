@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
-import validate from './validate'
-import { AppContext } from './AppContext'
+import validate from '../Helpers/validate'
+import { AppContext } from '../Contexts/AppContext'
 
 const useForm = () => {
 	const { setIsLoggedIn, values, setValues } = useContext(AppContext)

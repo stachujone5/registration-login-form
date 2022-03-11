@@ -1,13 +1,13 @@
 import { IoIosLock, IoMdPerson } from 'react-icons/io'
-import Container from '../../UI/Container'
-import Header from '../../UI/Header'
-import Label from '../../UI/Label'
-import Input from '../../UI/Input'
-import Button from '../../UI/Button'
-import Footer from '../../UI/Footer'
+import Container from '../../Components/Container/Container'
+import Header from '../../Components/Header/Header'
+import Label from '../../Components/Label/Label'
+import Input from '../../Components/Input/Input'
+import Button from '../../Components/Button/Button'
+import Footer from '../../Components/Footer/Footer'
+import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage'
 import { useContext, useState } from 'react'
-import { AppContext } from '../../Helpers/AppContext'
-import ErrorMessage from '../../UI/ErrorMessage'
+import { AppContext, REGISTER_PAGE } from '../../Contexts/AppContext'
 
 const Login = () => {
 	const { setIsLoggedIn } = useContext(AppContext)
@@ -35,17 +35,14 @@ const Login = () => {
 		<Container>
 			<Header>Login</Header>
 			<form onSubmit={handleSubmit}>
-				<Label htmlFor='username' text='Username' icon={<IoMdPerson></IoMdPerson>}></Label>
+				<Label htmlFor='username' text='Username' icon={<IoMdPerson />} />
 				<Input type='text' placeholder='Enter username' id='username' name='username' onChange={handleChange} />
-
-				<Label htmlFor='password' text='Password' icon={<IoIosLock></IoIosLock>}></Label>
+				<Label htmlFor='password' text='Password' icon={<IoIosLock />} />
 				<Input type='password' placeholder='Enter password' id='password' name='password' onChange={handleChange} />
-
 				{isError && <ErrorMessage>Your username or password is incorrect.</ErrorMessage>}
-
 				<Button type='submit'>Sign in</Button>
 			</form>
-			<Footer infoText="Don't have an account?" btnText='Sign up' page='register'></Footer>
+			<Footer infoText="Don't have an account?" btnText='Sign up' page={REGISTER_PAGE} />
 		</Container>
 	)
 }
