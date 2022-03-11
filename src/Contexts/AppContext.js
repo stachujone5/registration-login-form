@@ -5,7 +5,6 @@ export const LOGIN_PAGE = 'login'
 
 export const AppProvider = ({ children }) => {
 	const defaultValues = { username: '', password: '', passwordRepeat: '', email: '' }
-
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const [values, setValues] = useState(defaultValues)
 	const [page, setPage] = useState(REGISTER_PAGE)
