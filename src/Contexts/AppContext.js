@@ -3,7 +3,7 @@ export const AppContext = createContext()
 export const REGISTER_PAGE = 'register'
 export const LOGIN_PAGE = 'login'
 
-const AppProvider = ({ children }) => {
+export const AppProvider = ({ children }) => {
 	const defaultValues = { username: '', password: '', passwordRepeat: '', email: '' }
 
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -16,5 +16,3 @@ const AppProvider = ({ children }) => {
 		</AppContext.Provider>
 	)
 }
-
-export default AppProvider

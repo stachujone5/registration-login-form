@@ -1,6 +1,6 @@
 import classes from './Label.module.scss'
 
-const Label = ({ htmlFor, text, icon }) => {
+export const Label = ({ htmlFor, text, icon }) => {
 	return (
 		<label htmlFor={htmlFor} className={classes.label}>
 			{icon}
@@ -8,5 +8,3 @@ const Label = ({ htmlFor, text, icon }) => {
 		</label>
 	)
 }
-
-export default Label

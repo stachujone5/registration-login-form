@@ -1,6 +1,6 @@
 import classes from './Input.module.scss'
 
-const Input = ({ type, placeholder, id, name, onBlur, onChange }) => {
+export const Input = ({ type, placeholder, id, name, onBlur, onChange }) => {
 	return (
 		<input
 			type={type}
@@ -13,5 +13,3 @@ const Input = ({ type, placeholder, id, name, onBlur, onChange }) => {
 		/>
 	)
 }
-
-export default Input

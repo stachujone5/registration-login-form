@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { AppContext } from '../../Contexts/AppContext'
 import classes from './Footer.module.scss'
 
-const Footer = ({ infoText, btnText, page }) => {
+export const Footer = ({ infoText, btnText, page }) => {
 	const { setPage } = useContext(AppContext)
 
 	return (
@@ -14,5 +14,3 @@ const Footer = ({ infoText, btnText, page }) => {
 		</>
 	)
 }
-
-export default Footer

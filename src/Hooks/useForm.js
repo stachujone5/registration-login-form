@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import validate from '../Helpers/validate'
+import { validate } from '../Helpers/validate'
 import { AppContext } from '../Contexts/AppContext'
 
-const useForm = () => {
+export const useForm = () => {
 	const { setIsLoggedIn, values, setValues } = useContext(AppContext)
 	const [errors, setErrors] = useState({})
 	const [isTouched, setIsTouched] = useState({})
@@ -41,5 +41,3 @@ const useForm = () => {
 
 	return { errors, handleBlur, isTouched, handleSubmit }
 }
-
-export default useForm

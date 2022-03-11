@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { AppContext } from '../../Contexts/AppContext'
-import Container from '../../Components/Container/Container'
-import Button from '../../Components/Button/Button'
+import { Container } from '../../Components/Container/Container'
+import { Button } from '../../Components/Button/Button'
 import classes from './Welcome.module.scss'
 
-const Welcome = () => {
+export const Welcome = () => {
 	const { defaultValues, setValues, setIsLoggedIn } = useContext(AppContext)
 
 	const handleSignOut = () => {
@@ -24,5 +24,3 @@ const Welcome = () => {
 		</Container>
 	)
 }
-
-export default Welcome

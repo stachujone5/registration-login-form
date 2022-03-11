@@ -1,11 +1,11 @@
 import { IoIosLock, IoMdPerson, IoIosMail } from 'react-icons/io'
-import useForm from '../../Hooks/useForm'
-import Label from '../../Components/Label/Label'
-import Input from '../../Components/Input/Input'
-import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage'
-import Button from '../../Components/Button/Button'
+import { useForm } from '../../Hooks/useForm'
+import { Label } from '../../Components/Label/Label'
+import { Input } from '../../Components/Input/Input'
+import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage'
+import { Button } from '../../Components/Button/Button'
 
-const FormBody = () => {
+export const RegisterBody = () => {
 	const { errors, handleBlur, isTouched, handleSubmit } = useForm()
 
 	return (
@@ -34,5 +34,3 @@ const FormBody = () => {
 		</form>
 	)
 }
-
-export default FormBody
