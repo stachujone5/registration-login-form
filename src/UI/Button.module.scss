@@ -12,4 +12,9 @@
 	&:hover {
 		background-color: var(--clr-accent-hover);
 	}
+
+	&:focus {
+		outline: none;
+		background-color: var(--clr-accent-hover);
+	}
 }

@@ -12,7 +12,14 @@
 	background: none;
 	&:hover {
 		color: var(--clr-accent-hover);
+		&::before {
+			width: 100%;
+		}
+	}
 
+	&:focus {
+		outline: none;
+		color: var(--clr-accent-hover);
 		&::before {
 			width: 100%;
 		}
