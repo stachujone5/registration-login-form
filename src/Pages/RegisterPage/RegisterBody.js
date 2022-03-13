@@ -13,6 +13,7 @@ export const RegisterBody = () => {
 			<Label htmlFor='username' text='Username' icon={<IoMdPerson />} />
 			<Input type='text' placeholder='Enter username' id='username' name='username' onBlur={handleBlur} />
 			{errors.usernameError && isTouched.username && <ErrorMessage>{errors.usernameError}</ErrorMessage>}
+			{errors.usernameIsTaken && isTouched.username && <ErrorMessage>{errors.usernameIsTaken}</ErrorMessage>}
 			<Label htmlFor='password' text='Password' icon={<IoIosLock />} />
 			<Input type='password' placeholder='Enter password' id='password' name='password' onBlur={handleBlur} />
 			{errors.passwordError && isTouched.password && <ErrorMessage>{errors.passwordError}</ErrorMessage>}
@@ -30,6 +31,7 @@ export const RegisterBody = () => {
 			<Label htmlFor='email' text='Email' icon={<IoIosMail />} />
 			<Input type='email' placeholder='Enter email' id='email' name='email' onBlur={handleBlur} />
 			{errors.emailError && isTouched.email && <ErrorMessage>{errors.emailError}</ErrorMessage>}
+			{errors.emailIsTaken && isTouched.email && <ErrorMessage>{errors.emailIsTaken}</ErrorMessage>}
 			<Button type='submit'>Sign up</Button>
 		</form>
 	)

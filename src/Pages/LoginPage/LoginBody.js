@@ -5,9 +5,10 @@ import { Label } from '../../Components/Label/Label'
 import { Input } from '../../Components/Input/Input'
 import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage'
 import { Button } from '../../Components/Button/Button'
+import { WELCOME_PAGE } from '../../Constants/constants'
 
 export const LoginBody = () => {
-	const { setIsLoggedIn } = useContext(AppContext)
+	const { setPage, setActualUser } = useContext(AppContext)
 	const [loginState, setLoginState] = useState({})
 	const [isError, setIsError] = useState(false)
 
@@ -17,14 +18,23 @@ export const LoginBody = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault()
-		const username = JSON.parse(localStorage.getItem('user')).username
-		const password = JSON.parse(localStorage.getItem('user')).password
+		if (!localStorage.getItem('users')) {
+			setIsError(true)
+			return
+		}
 
-		if (username === loginState.username && password === loginState.password) {
-			setIsLoggedIn(true)
+		const users = JSON.parse(localStorage.getItem('users'))
+		const actualUser = users.find(
+			user => user.username === loginState.username && user.password === loginState.password
+		)
+
+		if (actualUser) {
+			setActualUser(actualUser)
+			setPage(WELCOME_PAGE)
 			setIsError(false)
 			return
 		}
+
 		setIsError(true)
 	}
 	return (

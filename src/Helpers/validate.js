@@ -1,8 +1,20 @@
 export const validate = data => {
-	const errors = { usernameError: '', passwordError: '', passwordRepeatError: '', emailError: '' }
+	const errors = {
+		usernameError: '',
+		passwordError: '',
+		passwordRepeatError: '',
+		emailError: '',
+		usernameIsTaken: '',
+		emailIsTaken: '',
+	}
+
 	const regex = new RegExp(
 		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	)
+
+	const storedUsers = JSON.parse(localStorage.getItem('users')) || []
+	const matchingUsername = storedUsers.find(user => user.username === data.username)
+	const matchingEmail = storedUsers.find(user => user.email === data.email)
 
 	if (data.username.trim().length < 5) {
 		errors.usernameError = 'Username is too short, min. 5 characters'
@@ -26,6 +38,13 @@ export const validate = data => {
 
 	if (!regex.test(data.email)) {
 		errors.emailError = 'Email is invalid'
+	}
+
+	if (matchingUsername) {
+		errors.usernameIsTaken = 'This username is already in use'
+	}
+	if (matchingEmail) {
+		errors.emailIsTaken = 'This email is already in use'
 	}
 
 	return errors

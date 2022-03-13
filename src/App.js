@@ -1,15 +1,22 @@
 import './index.scss'
-import { Welcome } from './Pages/WelcomePage/Welcome'
-import { AppContext } from './Contexts/AppContext'
 import { useContext } from 'react'
-import { Page } from './Components/Page/Page'
+import { AppContext } from './Contexts/AppContext'
+import { LoginPage } from './Pages/LoginPage/LoginPage'
+import { RegisterPage } from './Pages/RegisterPage/RegisterPage'
+import { WelcomePage } from './Pages/WelcomePage/WelcomePage'
+import { REGISTER_PAGE } from './Constants/constants'
+import { WELCOME_PAGE } from './Constants/constants'
 
 export const App = () => {
-	const { isLoggedIn } = useContext(AppContext)
+	const { page } = useContext(AppContext)
 
-	if (isLoggedIn) {
-		return <Welcome />
+	if (page === REGISTER_PAGE) {
+		return <RegisterPage />
 	}
 
-	return <Page />
+	if (page === WELCOME_PAGE) {
+		return <WelcomePage />
+	}
+
+	return <LoginPage />
 }
