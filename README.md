@@ -3,7 +3,7 @@
 My first react app built to practice hooks, context api and more.
 Login data is stored in localstorage.
 
-## [Live demo](https://http://stachujone5.github.io/#/register)
+## [Live demo](https://stachujone5.github.io/registration-login-form/#/register)
 
 ### `npm install`
 
