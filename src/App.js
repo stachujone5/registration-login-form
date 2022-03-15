@@ -11,7 +11,7 @@ export const App = () => {
 	const { isLoggedIn } = useContext(AppContext)
 
 	return (
-		<Routes>
+		<Routes basename={process.env.PUBLIC_URL}>
 			<Route path='/' element={<Navigate to='/register' />} />
 			<Route path='/register' element={<RegisterPage />} />
 			<Route path='/login' element={<LoginPage />} />
