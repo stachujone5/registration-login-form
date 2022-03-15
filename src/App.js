@@ -4,19 +4,19 @@ import { AppContext } from './Contexts/AppContext'
 import { LoginPage } from './Pages/LoginPage/LoginPage'
 import { RegisterPage } from './Pages/RegisterPage/RegisterPage'
 import { WelcomePage } from './Pages/WelcomePage/WelcomePage'
-import { REGISTER_PAGE } from './Constants/constants'
-import { WELCOME_PAGE } from './Constants/constants'
+import { NotFound } from './Pages/NotFoundPage/NotFound'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 export const App = () => {
-	const { page } = useContext(AppContext)
+	const { isLoggedIn } = useContext(AppContext)
 
-	if (page === REGISTER_PAGE) {
-		return <RegisterPage />
-	}
-
-	if (page === WELCOME_PAGE) {
-		return <WelcomePage />
-	}
-
-	return <LoginPage />
+	return (
+		<Routes>
+			<Route path='/' element={<Navigate to='/register' />} />
+			<Route path='/register' element={<RegisterPage />} />
+			<Route path='/login' element={<LoginPage />} />
+			{isLoggedIn && <Route path='/welcome' element={<WelcomePage />} />}
+			<Route path='*' element={<NotFound />} />
+		</Routes>
+	)
 }

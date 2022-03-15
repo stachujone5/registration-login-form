@@ -1,14 +1,12 @@
 import { Container } from '../../Components/Container/Container'
 import { Header } from '../../Components/Header/Header'
-import { LoginBody } from './LoginBody'
 import { Footer } from '../../Components/Footer/Footer'
 
-export const LoginPage = () => {
+export const NotFound = () => {
 	return (
 		<Container>
-			<Header>Login</Header>
-			<LoginBody />
-			<Footer infoText="Don't have an account?" btnText='Sign up' to='/register' />
+			<Header>404 error</Header>
+			<Footer infoText="Looks like you've found a dead end" btnText='Go back to home page' to='/login'></Footer>
 		</Container>
 	)
 }

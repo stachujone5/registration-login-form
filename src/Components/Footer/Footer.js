@@ -1,16 +1,13 @@
-import { useContext } from 'react'
-import { AppContext } from '../../Contexts/AppContext'
 import classes from './Footer.module.scss'
+import { Link } from 'react-router-dom'
 
-export const Footer = ({ infoText, btnText, page }) => {
-	const { setPage } = useContext(AppContext)
-
+export const Footer = ({ infoText, btnText, to }) => {
 	return (
 		<>
 			<p className={classes.info}>{infoText}</p>
-			<button onClick={() => setPage(page)} className={classes.signin}>
+			<Link to={to} className={classes.signin}>
 				{btnText}
-			</button>
+			</Link>
 		</>
 	)
 }

@@ -1,15 +1,17 @@
 import { useState, useEffect, useContext } from 'react'
 import { validate } from '../Helpers/validate'
 import { AppContext } from '../Contexts/AppContext'
-import { DEFAULT_VALUES } from '../Constants/constants'
-import { WELCOME_PAGE } from '../Constants/constants'
+import { useNavigate } from 'react-router-dom'
+
 const users = []
+const DEFAULT_VALUES = { username: '', password: '', passwordRepeat: '', email: '' }
 
 export const useForm = () => {
-	const { setPage, setActualUser } = useContext(AppContext)
+	const { setIsLoggedIn, setActualUser } = useContext(AppContext)
 	const [errors, setErrors] = useState({})
 	const [isTouched, setIsTouched] = useState({})
 	const [values, setValues] = useState(DEFAULT_VALUES)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		setErrors(prevErros => ({ ...prevErros, ...validate(values) }))
@@ -33,8 +35,10 @@ export const useForm = () => {
 		const newUser = { username: values.username, password: values.password, email: values.email }
 		users.push(newUser)
 		setActualUser(newUser)
-		setPage(WELCOME_PAGE)
+		setIsLoggedIn(true)
+		navigate('/welcome', { replace: true })
 		reset()
+
 		if (localStorage.getItem('users')) {
 			const newUsers = JSON.parse(localStorage.getItem('users'))
 			newUsers.push(newUser)

@@ -2,15 +2,17 @@ import { useContext } from 'react'
 import { AppContext } from '../../Contexts/AppContext'
 import { Container } from '../../Components/Container/Container'
 import { Button } from '../../Components/Button/Button'
-import { LOGIN_PAGE } from '../../Constants/constants'
+import { useNavigate } from 'react-router-dom'
 import classes from './WelcomePage.module.scss'
 
 export const WelcomePage = () => {
-	const { setPage, actualUser, setActualUser } = useContext(AppContext)
+	const { setIsLoggedIn, actualUser, setActualUser } = useContext(AppContext)
+	const navigate = useNavigate()
 
 	const handleSignOut = () => {
-		setPage(LOGIN_PAGE)
+		setIsLoggedIn(false)
 		setActualUser({})
+		navigate('/login')
 	}
 
 	return (

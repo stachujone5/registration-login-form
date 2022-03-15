@@ -5,12 +5,13 @@ import { Label } from '../../Components/Label/Label'
 import { Input } from '../../Components/Input/Input'
 import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage'
 import { Button } from '../../Components/Button/Button'
-import { WELCOME_PAGE } from '../../Constants/constants'
+import { useNavigate } from 'react-router-dom'
 
 export const LoginBody = () => {
-	const { setPage, setActualUser } = useContext(AppContext)
+	const { setIsLoggedIn, setActualUser } = useContext(AppContext)
 	const [loginState, setLoginState] = useState({})
 	const [isError, setIsError] = useState(false)
+	const navigate = useNavigate()
 
 	const handleChange = e => {
 		setLoginState(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
@@ -30,8 +31,9 @@ export const LoginBody = () => {
 
 		if (actualUser) {
 			setActualUser(actualUser)
-			setPage(WELCOME_PAGE)
+			setIsLoggedIn(true)
 			setIsError(false)
+			navigate('/welcome', { replace: true })
 			return
 		}
 
