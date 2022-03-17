@@ -6,10 +6,10 @@ import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage'
 import { Button } from '../../Components/Button/Button'
 
 export const RegisterBody = () => {
-	const { errors, handleBlur, isTouched, handleSubmit } = useForm()
+	const { errors, handleBlur, isTouched, handleRegister } = useForm()
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleRegister}>
 			<Label htmlFor='username' text='Username' icon={<IoMdPerson />} />
 			<Input type='text' placeholder='Enter username' id='username' name='username' onBlur={handleBlur} />
 			{errors.usernameError && isTouched.username && <ErrorMessage>{errors.usernameError}</ErrorMessage>}
