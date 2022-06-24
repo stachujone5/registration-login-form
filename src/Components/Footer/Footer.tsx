@@ -1,7 +1,13 @@
 import classes from './Footer.module.scss'
 import { Link } from 'react-router-dom'
 
-export const Footer = ({ infoText, btnText, to }) => {
+interface Props {
+	infoText: string
+	btnText: string
+	to: string
+}
+
+export const Footer = ({ infoText, btnText, to }: Props) => {
 	return (
 		<>
 			<p className={classes.info}>{infoText}</p>

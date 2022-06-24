@@ -1,6 +1,11 @@
+import { ReactNode } from 'react'
 import classes from './Header.module.scss'
 
-export const Header = ({ children }) => {
+interface Props {
+	children: ReactNode
+}
+
+export const Header = ({ children }: Props) => {
 	return (
 		<div className={classes.header}>
 			<h1>{children}</h1>
