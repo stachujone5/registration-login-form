@@ -1,10 +1,10 @@
 import './index.scss'
 import { useContext } from 'react'
-import { AppContext } from './Contexts/AppContext'
-import { LoginPage } from './Pages/LoginPage/LoginPage'
-import { RegisterPage } from './Pages/RegisterPage/RegisterPage'
-import { WelcomePage } from './Pages/WelcomePage/WelcomePage'
-import { NotFound } from './Pages/NotFoundPage/NotFound'
+import { AppContext } from './contexts/AppContext'
+import { LoginPage } from './pages/login/LoginPage'
+import { RegisterPage } from './pages/register/RegisterPage'
+import { WelcomePage } from './pages/welcome/WelcomePage'
+import { NotFound } from './pages/404/NotFound'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 export const App = () => {

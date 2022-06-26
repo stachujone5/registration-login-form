@@ -2,9 +2,9 @@ import classes from './Label.module.scss'
 import type { ReactNode } from 'react'
 
 interface Props {
-	htmlFor: string
-	text: string
-	icon: ReactNode
+	htmlFor?: string
+	text?: string
+	icon?: ReactNode
 }
 
 export const Label = ({ htmlFor, text, icon }: Props) => {

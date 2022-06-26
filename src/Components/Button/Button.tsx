@@ -1,9 +1,9 @@
 import classes from './Button.module.scss'
 import clsx from 'clsx'
-import type { MouseEventHandler, ReactNode } from 'react'
+import type { MouseEventHandler } from 'react'
+import { PropsChildren } from '../../types/types'
 
-interface Props {
-	children: ReactNode
+interface Props extends PropsChildren {
 	type?: 'button' | 'submit' | 'reset'
 	className?: string
 	onClick?: MouseEventHandler<HTMLButtonElement>

@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { AppContext } from '../../Contexts/AppContext'
-import { Container } from '../../Components/Container/Container'
-import { Button } from '../../Components/Button/Button'
+import { AppContext } from '../../contexts/AppContext'
+import { Container } from '../../Components/container/Container'
+import { Button } from '../../Components/button/Button'
 import { useNavigate } from 'react-router-dom'
 import classes from './WelcomePage.module.scss'
 

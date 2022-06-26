@@ -1,6 +1,6 @@
-import { Container } from '../../Components/Container/Container'
-import { Header } from '../../Components/Header/Header'
-import { Footer } from '../../Components/Footer/Footer'
+import { Container } from '../../Components/container/Container'
+import { Header } from '../../Components/header/Header'
+import { Footer } from '../../Components/footer/Footer'
 
 export const NotFound = () => {
 	return (

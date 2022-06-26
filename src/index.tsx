@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { App } from './App'
-import { AppProvider } from './Contexts/AppContext'
+import { AppProvider } from './contexts/AppContext'
 import { HashRouter } from 'react-router-dom'
 
 ReactDOM.render(

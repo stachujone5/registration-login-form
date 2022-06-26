@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
-import { validate } from '../Helpers/validate'
-import { AppContext } from '../Contexts/AppContext'
+import { validate } from '../helpers/validate'
+import { AppContext } from '../contexts/AppContext'
 import { useNavigate } from 'react-router-dom'
 
 const users = []
