@@ -1,0 +1,11 @@
+{
+	"root": true,
+	"parserOptions": {
+		"project": "tsconfig.json"
+	},
+	"plugins": ["@typeofweb"],
+	"extends": ["plugin:@typeofweb/recommended"],
+	"rules": {
+		"@typeofweb/capitalize-modules": "off"
+	}
+}

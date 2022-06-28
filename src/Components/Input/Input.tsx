@@ -1,13 +1,14 @@
 import classes from './Input.module.scss'
+
 import type { ChangeEventHandler, FocusEventHandler } from 'react'
 
 interface Props {
-	type?: string
-	placeholder?: string
-	id?: string
-	name?: string
-	onBlur?: FocusEventHandler<HTMLInputElement>
-	onChange?: ChangeEventHandler<HTMLInputElement>
+	readonly type?: string
+	readonly placeholder?: string
+	readonly id?: string
+	readonly name?: string
+	readonly onBlur?: FocusEventHandler<HTMLInputElement>
+	readonly onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 export const Input = ({ type, placeholder, id, name, onBlur, onChange }: Props) => {

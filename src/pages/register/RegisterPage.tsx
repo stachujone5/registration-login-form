@@ -1,7 +1,8 @@
-import { Header } from '../../Components/header/Header'
+import { Container } from '../../components/container/Container'
+import { Footer } from '../../components/footer/Footer'
+import { Header } from '../../components/header/Header'
+
 import { RegisterBody } from './RegisterBody'
-import { Footer } from '../../Components/footer/Footer'
-import { Container } from '../../Components/container/Container'
 
 export const RegisterPage = () => {
 	return (

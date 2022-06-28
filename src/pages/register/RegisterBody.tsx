@@ -1,9 +1,10 @@
 import { IoIosLock, IoMdPerson, IoIosMail } from 'react-icons/io'
+
+import { Button } from '../../components/button/Button'
+import { ErrorMessage } from '../../components/error-message/ErrorMessage'
+import { Input } from '../../components/input/Input'
+import { Label } from '../../components/label/Label'
 import { useForm } from '../../hooks/useForm'
-import { Label } from '../../Components/label/Label'
-import { Input } from '../../Components/input/Input'
-import { ErrorMessage } from '../../Components/error-message/ErrorMessage'
-import { Button } from '../../Components/button/Button'
 
 export const RegisterBody = () => {
 	const { errors, handleBlur, isTouched, handleRegister } = useForm()

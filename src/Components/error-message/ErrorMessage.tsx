@@ -1,4 +1,5 @@
 import classes from './ErrorMessage.module.scss'
+
 import type { PropsChildren } from '../../types/types'
 
 export const ErrorMessage = ({ children }: PropsChildren) => {

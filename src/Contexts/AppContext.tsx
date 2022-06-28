@@ -1,20 +1,16 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react'
-import { PropsChildren } from '../types/types'
+import { createContext, useState } from 'react'
 
-interface User {
-	username: string
-	password: string
-	email: string
+import type { PropsChildren, User } from '../types/types'
+import type { Dispatch, SetStateAction } from 'react'
+
+interface Context {
+	readonly isLoggedIn: boolean
+	readonly setIsLoggedIn: Dispatch<SetStateAction<boolean>>
+	readonly actualUser: User | null
+	readonly setActualUser: Dispatch<SetStateAction<User | null>>
 }
 
-interface AppContextInterface {
-	isLoggedIn: boolean
-	setIsLoggedIn: Dispatch<SetStateAction<boolean>>
-	actualUser: User | null
-	setActualUser: Dispatch<SetStateAction<User | null>>
-}
-
-export const AppContext = createContext<AppContextInterface>({
+export const AppContext = createContext<Context>({
 	isLoggedIn: false,
 	setIsLoggedIn: () => {},
 	actualUser: null,

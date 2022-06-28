@@ -1,12 +1,14 @@
-import classes from './Button.module.scss'
 import clsx from 'clsx'
+
+import classes from './Button.module.scss'
+
+import type { PropsChildren } from '../../types/types'
 import type { MouseEventHandler } from 'react'
-import { PropsChildren } from '../../types/types'
 
 interface Props extends PropsChildren {
-	type?: 'button' | 'submit' | 'reset'
-	className?: string
-	onClick?: MouseEventHandler<HTMLButtonElement>
+	readonly type?: 'button' | 'submit' | 'reset'
+	readonly className?: string
+	readonly onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const Button = ({ children, type = 'button', onClick, className = '' }: Props) => {

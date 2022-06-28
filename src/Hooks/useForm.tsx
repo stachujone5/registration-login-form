@@ -1,12 +1,16 @@
 import { useState, useEffect, useContext } from 'react'
-import { validate } from '../helpers/validate'
-import { AppContext } from '../contexts/AppContext'
 import { useNavigate } from 'react-router-dom'
 
-const users = []
+import { AppContext } from '../contexts/AppContext'
+import { validate } from '../helpers/validate'
+
+import type { User } from '../types/types'
+
+// const users: readonly User[] = []
 const DEFAULT_VALUES = { username: '', password: '', passwordRepeat: '', email: '' }
 
 export const useForm = () => {
+	const [users, setUsers] = useState<readonly User[]>([])
 	const { setIsLoggedIn, setActualUser } = useContext(AppContext)
 	const [errors, setErrors] = useState({})
 	const [isTouched, setIsTouched] = useState({})
@@ -34,16 +38,18 @@ export const useForm = () => {
 			return
 		}
 
-		const newUser = { username: values.username, password: values.password, email: values.email }
-		users.push(newUser)
+		const newUser: User = { username: values.username, password: values.password, email: values.email }
+		setUsers(prevUsers => [...prevUsers, newUser])
 		setActualUser(newUser)
 		setIsLoggedIn(true)
 		navigate('/welcome', { replace: true })
 		reset()
 
-		if (localStorage.getItem('users')) {
-			const newUsers = JSON.parse(localStorage.getItem('users'))
-			newUsers.push(newUser)
+		const lsUsers = localStorage.getItem('users')
+
+		if (lsUsers) {
+			const newUsers: readonly User[] = JSON.parse(lsUsers)
+			setUsers(newUsers)
 			localStorage.setItem('users', JSON.stringify(newUsers))
 			return
 		}

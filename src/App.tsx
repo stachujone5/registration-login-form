@@ -1,17 +1,19 @@
-import './index.scss'
 import { useContext } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
 import { AppContext } from './contexts/AppContext'
+import { NotFound } from './pages/404/NotFound'
 import { LoginPage } from './pages/login/LoginPage'
 import { RegisterPage } from './pages/register/RegisterPage'
 import { WelcomePage } from './pages/welcome/WelcomePage'
-import { NotFound } from './pages/404/NotFound'
-import { Routes, Route, Navigate } from 'react-router-dom'
+
+import './index.scss'
 
 export const App = () => {
 	const { isLoggedIn } = useContext(AppContext)
 
 	return (
-		<Routes basename={process.env.PUBLIC_URL}>
+		<Routes>
 			<Route path='/' element={<Navigate to='/register' />} />
 			<Route path='/register' element={<RegisterPage />} />
 			<Route path='/login' element={<LoginPage />} />
