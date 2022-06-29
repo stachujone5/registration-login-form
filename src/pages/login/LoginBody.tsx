@@ -4,10 +4,10 @@ import { Button } from '../../components/button/Button'
 import { ErrorMessage } from '../../components/error-message/ErrorMessage'
 import { Input } from '../../components/input/Input'
 import { Label } from '../../components/label/Label'
-import { useForm } from '../../hooks/useForm'
+import { useLogin } from '../../hooks/useLogin'
 
 export const LoginBody = () => {
-	const { isLoginError, handleLoginChange, handleLogin } = useForm()
+	const { isLoginError, handleLoginChange, handleLogin } = useLogin()
 
 	return (
 		<form onSubmit={handleLogin}>
