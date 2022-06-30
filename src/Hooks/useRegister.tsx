@@ -7,14 +7,14 @@ import { validate } from '../helpers/validate'
 import type { User } from '../types/types'
 import type { FormEvent, ChangeEvent } from 'react'
 
-interface Values {
-	readonly username?: string
-	readonly password?: string
-	readonly passwordRepeat?: string
-	readonly email?: string
+export interface Values {
+	readonly username: string
+	readonly password: string
+	readonly passwordRepeat: string
+	readonly email: string
 }
 
-interface Errors {
+export interface Errors {
 	readonly usernameError: string
 	readonly passwordError: string
 	readonly passwordRepeatError: string
@@ -23,7 +23,7 @@ interface Errors {
 	readonly emailIsTaken: string
 }
 
-interface Touched {
+export interface Touched {
 	readonly username?: boolean
 	readonly password?: boolean
 	readonly passwordRepeat?: boolean
@@ -40,7 +40,9 @@ export const useRegister = () => {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		setErrors(prevErros => ({ ...prevErros, ...validate(values) }))
+		if (values) {
+			setErrors(prevErros => ({ ...prevErros, ...validate(values) }))
+		}
 	}, [values])
 
 	const handleRegister = (e: FormEvent<HTMLFormElement>) => {
@@ -51,7 +53,7 @@ export const useRegister = () => {
 		setIsTouched({ username: true, password: true, passwordRepeat: true, email: true })
 
 		const newUser: User = { username: values.username, password: values.password, email: values.email }
-    
+
 		setUsers(prevUsers => [...prevUsers, newUser])
 		setActualUser(newUser)
 		setIsLoggedIn(true)

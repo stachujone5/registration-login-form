@@ -1,4 +1,10 @@
-export const validate = data => {
+import { EMAIL_REGEX } from '../constants/constants'
+
+import type { User } from '../types/types'
+import type { Values } from './../hooks/useRegister'
+
+export const validate = (data: Values) => {
+	const lsUsers = localStorage.getItem('users')
 	const errors = {
 		usernameError: '',
 		passwordError: '',
@@ -8,11 +14,7 @@ export const validate = data => {
 		emailIsTaken: '',
 	}
 
-	const regex = new RegExp(
-		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-	)
-
-	const storedUsers = JSON.parse(localStorage.getItem('users')) || []
+	const storedUsers: readonly User[] = (lsUsers && JSON.parse(lsUsers)) || []
 	const matchingUsername = storedUsers.find(user => user.username === data.username)
 	const matchingEmail = storedUsers.find(user => user.email === data.email)
 
@@ -20,7 +22,7 @@ export const validate = data => {
 		errors.usernameError = 'Username is too short, min. 5 characters'
 	}
 
-	if (!data.password.trim().length) {
+	if (!data.password?.trim().length) {
 		errors.passwordError = 'Password is required'
 	}
 
@@ -28,7 +30,7 @@ export const validate = data => {
 		errors.passwordError = 'Password is too short, min. 8 characters'
 	}
 
-	if (!data.password.length && !data.passwordRepeat.length) {
+	if (!data.password?.length && !data.passwordRepeat?.length) {
 		errors.passwordRepeatError = "Passwords don't match"
 	}
 
@@ -36,7 +38,7 @@ export const validate = data => {
 		errors.passwordRepeatError = "Passwords don't match"
 	}
 
-	if (!regex.test(data.email)) {
+	if (!EMAIL_REGEX.test(data.email)) {
 		errors.emailError = 'Email is invalid'
 	}
 
