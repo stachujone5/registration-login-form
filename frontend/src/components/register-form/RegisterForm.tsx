@@ -1,13 +1,13 @@
 import { IoIosLock, IoMdPerson, IoIosMail } from 'react-icons/io'
 
-import { Button } from '../../components/button/Button'
-import { ErrorMessage } from '../../components/error-message/ErrorMessage'
-import { Input } from '../../components/input/Input'
-import { Label } from '../../components/label/Label'
-import { useForm } from '../../hooks/useForm'
+import { useRegister } from '../../hooks/useRegister'
+import { Button } from '../button/Button'
+import { ErrorMessage } from '../error-message/ErrorMessage'
+import { Input } from '../input/Input'
+import { Label } from '../label/Label'
 
-export const RegisterBody = () => {
-	const { errors, handleBlur, isTouched, handleRegister } = useForm()
+export const RegisterForm = () => {
+	const { errors, handleBlur, isTouched, handleRegister } = useRegister()
 
 	return (
 		<form onSubmit={handleRegister}>

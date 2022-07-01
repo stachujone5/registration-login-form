@@ -1,52 +1,26 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { DEFAULT_ERRORS, DEFAULT_REGISTER_VALUES, DEFAULT_TOUCHED } from '../constants/defaults'
 import { AppContext } from '../contexts/AppContext'
 import { validate } from '../helpers/validate'
 
-import type { User } from '../types/types'
+import type { Errors, Touched, User, Values } from '../types/types'
 import type { FormEvent, ChangeEvent } from 'react'
 
-export interface Values {
-	readonly username: string
-	readonly password: string
-	readonly passwordRepeat: string
-	readonly email: string
-}
-
-export interface Errors {
-	readonly usernameError: string
-	readonly passwordError: string
-	readonly passwordRepeatError: string
-	readonly emailError: string
-	readonly usernameIsTaken: string
-	readonly emailIsTaken: string
-}
-
-export interface Touched {
-	readonly username?: boolean
-	readonly password?: boolean
-	readonly passwordRepeat?: boolean
-	readonly email?: boolean
-}
-
 export const useRegister = () => {
-	const [users, setUsers] = useState<readonly User[] | null>(null)
-	const [errors, setErrors] = useState<Errors | null>(null)
-	const [isTouched, setIsTouched] = useState<Touched | null>(null)
-	const [values, setValues] = useState<Values | null>(null)
+	const [users, setUsers] = useState<readonly User[]>([])
+	const [errors, setErrors] = useState<Errors>(DEFAULT_ERRORS)
+	const [isTouched, setIsTouched] = useState<Touched>(DEFAULT_TOUCHED)
+	const [values, setValues] = useState<Values>(DEFAULT_REGISTER_VALUES)
 	const { setIsLoggedIn, setActualUser } = useContext(AppContext)
 
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		if (values) {
-			setErrors(prevErros => ({ ...prevErros, ...validate(values) }))
-		}
-	}, [values])
-
 	const handleRegister = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+
+		validate(values, setErrors)
 
 		if (!values || !errors) return
 
@@ -82,8 +56,8 @@ export const useRegister = () => {
 	}
 
 	const reset = () => {
-		setIsTouched(null)
-		setErrors(null)
+		setIsTouched(DEFAULT_TOUCHED)
+		setErrors(DEFAULT_ERRORS)
 	}
 
 	return { errors, handleBlur, isTouched, handleRegister }

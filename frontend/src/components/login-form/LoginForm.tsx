@@ -1,12 +1,12 @@
 import { IoIosLock, IoMdPerson } from 'react-icons/io'
 
-import { Button } from '../../components/button/Button'
-import { ErrorMessage } from '../../components/error-message/ErrorMessage'
-import { Input } from '../../components/input/Input'
-import { Label } from '../../components/label/Label'
 import { useLogin } from '../../hooks/useLogin'
+import { Button } from '../button/Button'
+import { ErrorMessage } from '../error-message/ErrorMessage'
+import { Input } from '../input/Input'
+import { Label } from '../label/Label'
 
-export const LoginBody = () => {
+export const LoginForm = () => {
 	const { isLoginError, handleLoginChange, handleLogin } = useLogin()
 
 	return (

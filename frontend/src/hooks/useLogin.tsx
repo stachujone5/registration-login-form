@@ -1,18 +1,14 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { DEFAULT_LOGIN_VALUES } from '../constants/defaults'
 import { AppContext } from '../contexts/AppContext'
 
-import type { User } from '../types/types'
+import type { LoginValues, User } from '../types/types'
 import type { FormEvent, ChangeEvent } from 'react'
 
-interface LoginValues {
-	readonly username?: string
-	readonly password?: string
-}
-
 export const useLogin = () => {
-	const [loginValues, setLoginValues] = useState<LoginValues | null>(null)
+	const [loginValues, setLoginValues] = useState<LoginValues>(DEFAULT_LOGIN_VALUES)
 	const [isLoginError, setIsLoginError] = useState(false)
 	const { setIsLoggedIn, setActualUser } = useContext(AppContext)
 	const navigate = useNavigate()
@@ -26,7 +22,7 @@ export const useLogin = () => {
 	const handleLogin = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		if (!lsUsers || !loginValues) {
+		if (!lsUsers) {
 			setIsLoginError(true)
 			return
 		}
