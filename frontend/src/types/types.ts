@@ -22,8 +22,6 @@ export interface Errors {
 	readonly passwordError: string
 	readonly passwordRepeatError: string
 	readonly emailError: string
-	readonly usernameIsTaken: string
-	readonly emailIsTaken: string
 }
 
 export interface Touched {

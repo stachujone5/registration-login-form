@@ -12,8 +12,6 @@ export const DEFAULT_ERRORS: Errors = {
 	passwordError: '',
 	passwordRepeatError: '',
 	emailError: '',
-	usernameIsTaken: '',
-	emailIsTaken: '',
 }
 
 export const DEFAULT_TOUCHED: Touched = {

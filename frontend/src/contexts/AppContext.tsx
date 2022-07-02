@@ -6,23 +6,23 @@ import type { Dispatch, SetStateAction } from 'react'
 interface Context {
 	readonly isLoggedIn: boolean
 	readonly setIsLoggedIn: Dispatch<SetStateAction<boolean>>
-	readonly actualUser: User | null
-	readonly setActualUser: Dispatch<SetStateAction<User | null>>
+	readonly currentUser: User | null
+	readonly setCurrentUser: Dispatch<SetStateAction<User | null>>
 }
 
 export const AppContext = createContext<Context>({
 	isLoggedIn: false,
 	setIsLoggedIn: () => {},
-	actualUser: null,
-	setActualUser: () => {},
+	currentUser: null,
+	setCurrentUser: () => {},
 })
 
 export const AppProvider = ({ children }: PropsChildren) => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
-	const [actualUser, setActualUser] = useState<User | null>(null)
+	const [currentUser, setCurrentUser] = useState<User | null>(null)
 
 	return (
-		<AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, setActualUser, actualUser }}>
+		<AppContext.Provider value={{ isLoggedIn, setIsLoggedIn, setCurrentUser, currentUser }}>
 			{children}
 		</AppContext.Provider>
 	)
