@@ -1,7 +1,7 @@
 {
 	"root": true,
 	"parserOptions": {
-		"project": "frontend/tsconfig.json"
+		"project": "tsconfig.json"
 	},
 	"plugins": ["@typeofweb"],
 	"extends": ["plugin:@typeofweb/recommended"],

@@ -6,34 +6,37 @@ import { ErrorMessage } from '../error-message/ErrorMessage'
 import { Input } from '../input/Input'
 import { Label } from '../label/Label'
 
+import type { Values } from '../../types/types'
+
+type InputName = keyof Values
+
 export const RegisterForm = () => {
-	const { errors, handleBlur, isTouched, handleRegister } = useRegister()
+	const {
+		errors: { usernameError, emailError, passwordError, passwordRepeatError },
+		handleBlur,
+		isTouched: { email, password, passwordRepeat, username },
+		handleRegister,
+	} = useRegister()
+
+	const registerInput = (name: InputName) => ({ name, onBlur: handleBlur, id: name })
 
 	return (
 		<form onSubmit={handleRegister}>
 			<Label htmlFor='username' text='Username' icon={<IoMdPerson />} />
-			<Input type='text' placeholder='Enter username' id='username' name='username' onBlur={handleBlur} />
-			{errors.usernameError && isTouched.username && <ErrorMessage>{errors.usernameError}</ErrorMessage>}
+			<Input type='text' placeholder='Enter username' {...registerInput('username')} />
+			{usernameError && username && <ErrorMessage>{usernameError}</ErrorMessage>}
 
 			<Label htmlFor='password' text='Password' icon={<IoIosLock />} />
-			<Input type='password' placeholder='Enter password' id='password' name='password' onBlur={handleBlur} />
-			{errors.passwordError && isTouched.password && <ErrorMessage>{errors.passwordError}</ErrorMessage>}
+			<Input type='password' placeholder='Enter password' {...registerInput('password')} />
+			{passwordError && password && <ErrorMessage>{passwordError}</ErrorMessage>}
 
 			<Label htmlFor='passwordRepeat' text='Repeat Password' icon={<IoIosLock />} />
-			<Input
-				type='password'
-				placeholder='Repeat password'
-				id='passwordRepeat'
-				name='passwordRepeat'
-				onBlur={handleBlur}
-			/>
-			{errors.passwordRepeatError && isTouched.passwordRepeat && (
-				<ErrorMessage>{errors.passwordRepeatError}</ErrorMessage>
-			)}
+			<Input type='password' placeholder='Repeat password' {...registerInput('passwordRepeat')} />
+			{passwordRepeatError && passwordRepeat && <ErrorMessage>{passwordRepeatError}</ErrorMessage>}
 
 			<Label htmlFor='email' text='Email' icon={<IoIosMail />} />
-			<Input type='email' placeholder='Enter email' id='email' name='email' onBlur={handleBlur} />
-			{errors.emailError && isTouched.email && <ErrorMessage>{errors.emailError}</ErrorMessage>}
+			<Input type='email' placeholder='Enter email' {...registerInput('email')} />
+			{emailError && email && <ErrorMessage>{emailError}</ErrorMessage>}
 
 			<Button type='submit'>Sign up</Button>
 		</form>
