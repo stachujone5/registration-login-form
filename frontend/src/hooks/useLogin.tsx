@@ -1,29 +1,34 @@
-import { useContext, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { DEFAULT_LOGIN_VALUES } from '../constants/defaults'
-import { AppContext } from '../contexts/AppContext'
+
+import { useUserContext } from './useUserContext'
 
 import type { LoginValues } from '../types/types'
 import type { FormEvent, ChangeEvent } from 'react'
 
 export const useLogin = () => {
-	const [loginValues, setLoginValues] = useState<LoginValues>(DEFAULT_LOGIN_VALUES)
-	const [isLoginError, setIsLoginError] = useState(false)
-	const { setIsLoggedIn } = useContext(AppContext)
-	const navigate = useNavigate()
+  const [loginValues, setLoginValues] = useState<LoginValues>(DEFAULT_LOGIN_VALUES)
+  const [isLoginError, setIsLoginError] = useState(false)
 
-	const handleLoginChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setLoginValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-	}
+  const { setIsLoggedIn } = useUserContext()
 
-	const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		console.log(loginValues)
-		setIsLoggedIn(true)
-		setIsLoginError(false)
-		navigate('/welcome', { replace: true })
-	}
+  const navigate = useNavigate()
 
-	return { handleLogin, handleLoginChange, isLoginError }
+  const handleLoginChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setLoginValues((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
+  }, [])
+
+  const handleLogin = useCallback((e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(loginValues)
+
+    setIsLoggedIn(true)
+
+    setIsLoginError(false)
+    navigate('/welcome', { replace: true })
+  }, [])
+
+  return { handleLogin, handleLoginChange, isLoginError }
 }
