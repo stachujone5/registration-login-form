@@ -16,30 +16,30 @@ export const RegisterForm = () => {
     errors: { usernameError, emailError, passwordError, passwordRepeatError },
     handleBlur,
     isTouched: { email, password, passwordRepeat, username },
-    handleRegister,
+    handleRegister
   } = useRegister()
 
-  const registerInput = useCallback((name: InputName) => ({ name, onBlur: handleBlur, id: name }), [])
+  const registerInput = useCallback((name: InputName) => ({ name, onBlur: handleBlur, id: name }), [handleBlur])
 
   return (
     <form onSubmit={handleRegister}>
-      <Label htmlFor="username" text="Username" icon={<IoMdPerson />} />
-      <Input type="text" placeholder="Enter username" {...registerInput('username')} />
+      <Label htmlFor='username' text='Username' icon={<IoMdPerson />} />
+      <Input type='text' placeholder='Enter username' {...registerInput('username')} />
       {usernameError && username && <ErrorMessage>{usernameError}</ErrorMessage>}
 
-      <Label htmlFor="password" text="Password" icon={<IoIosLock />} />
-      <Input type="password" placeholder="Enter password" {...registerInput('password')} />
+      <Label htmlFor='password' text='Password' icon={<IoIosLock />} />
+      <Input type='password' placeholder='Enter password' {...registerInput('password')} />
       {passwordError && password && <ErrorMessage>{passwordError}</ErrorMessage>}
 
-      <Label htmlFor="passwordRepeat" text="Repeat Password" icon={<IoIosLock />} />
-      <Input type="password" placeholder="Repeat password" {...registerInput('passwordRepeat')} />
+      <Label htmlFor='passwordRepeat' text='Repeat Password' icon={<IoIosLock />} />
+      <Input type='password' placeholder='Repeat password' {...registerInput('passwordRepeat')} />
       {passwordRepeatError && passwordRepeat && <ErrorMessage>{passwordRepeatError}</ErrorMessage>}
 
-      <Label htmlFor="email" text="Email" icon={<IoIosMail />} />
-      <Input type="email" placeholder="Enter email" {...registerInput('email')} />
+      <Label htmlFor='email' text='Email' icon={<IoIosMail />} />
+      <Input type='email' placeholder='Enter email' {...registerInput('email')} />
       {emailError && email && <ErrorMessage>{emailError}</ErrorMessage>}
 
-      <Button type="submit">Sign up</Button>
+      <Button type='submit'>Sign up</Button>
     </form>
   )
 }

@@ -13,11 +13,11 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/register" />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      {isLoggedIn && <Route path="/welcome" element={<WelcomePage />} />}
-      <Route path="*" element={<NotFound />} />
+      <Route path='/' element={<Navigate to='/register' />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/login' element={<LoginPage />} />
+      {isLoggedIn && <Route path='/welcome' element={<WelcomePage />} />}
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }

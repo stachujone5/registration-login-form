@@ -17,10 +17,10 @@ export const useLogin = () => {
   const navigate = useNavigate()
 
   const handleLoginChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setLoginValues((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
+    setLoginValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }, [])
 
-  const handleLogin = useCallback((e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(loginValues)
 
@@ -28,7 +28,7 @@ export const useLogin = () => {
 
     setIsLoginError(false)
     navigate('/welcome', { replace: true })
-  }, [])
+  }
 
   return { handleLogin, handleLoginChange, isLoginError }
 }

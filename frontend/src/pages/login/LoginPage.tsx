@@ -4,11 +4,11 @@ import { Header } from '../../components/header/Header'
 import { LoginForm } from '../../components/login-form/LoginForm'
 
 export const LoginPage = () => {
-	return (
-		<Container>
-			<Header>Login</Header>
-			<LoginForm />
-			<Footer infoText="Don't have an account?" btnText='Sign up' to='/register' />
-		</Container>
-	)
+  return (
+    <Container>
+      <Header>Login</Header>
+      <LoginForm />
+      <Footer infoText="Don't have an account?" btnText='Sign up' to='/register' />
+    </Container>
+  )
 }

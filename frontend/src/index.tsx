@@ -14,5 +14,5 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </UserProvider>
     </HashRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

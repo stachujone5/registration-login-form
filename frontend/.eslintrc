@@ -4,8 +4,15 @@
     "project": "tsconfig.json"
   },
   "plugins": ["@typeofweb"],
-  "extends": ["plugin:@typeofweb/recommended"],
+  "extends": ["react-app", "plugin:@typeofweb/recommended"],
   "rules": {
-    "@typeofweb/capitalize-modules": "off"
+    "@typeofweb/capitalize-modules": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ]
   }
 }
