@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+  },
+  "plugins": ["@typeofweb"],
+  "extends": ["plugin:@typeofweb/recommended"],
+  "rules": {
+    "@typeofweb/capitalize-modules": "off"
+  }
+}
