@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
 import { Button } from '../../components/button/Button'
 import { Container } from '../../components/container/Container'
@@ -8,12 +8,13 @@ import classes from './WelcomePage.module.scss'
 
 export const WelcomePage = () => {
   const { setIsLoggedIn, currentUser, setCurrentUser } = useUserContext()
-  const navigate = useNavigate()
+
+  const router = useRouter()
 
   const handleSignOut = () => {
     setIsLoggedIn(false)
     setCurrentUser(null)
-    navigate('/login')
+    void router.push('/login')
   }
 
   return (

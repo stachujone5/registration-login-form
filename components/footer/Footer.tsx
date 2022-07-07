@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 import classes from './Footer.module.scss'
 
@@ -12,7 +12,7 @@ export const Footer = ({ infoText, btnText, to }: Props) => {
   return (
     <>
       <p className={classes.info}>{infoText}</p>
-      <Link to={to} className={classes.signin}>
+      <Link href={to} className={classes.signin}>
         {btnText}
       </Link>
     </>

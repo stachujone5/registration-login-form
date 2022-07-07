@@ -4,9 +4,10 @@
     "project": "tsconfig.json"
   },
   "plugins": ["@typeofweb"],
-  "extends": ["react-app", "plugin:@typeofweb/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:@typeofweb/recommended"],
   "rules": {
     "@typeofweb/capitalize-modules": "off",
+    "import/no-default-export": 0,
     "react/self-closing-comp": [
       "error",
       {

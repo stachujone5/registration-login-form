@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { DEFAULT_REGISTER_VALUES, DEFAULT_TOUCHED } from '../constants/defaults'
 import { validate } from '../helpers/validate'
@@ -15,7 +15,7 @@ export const useRegister = () => {
 
   const { setIsLoggedIn, setCurrentUser } = useUserContext()
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const errors = validate(values)
 
@@ -28,7 +28,7 @@ export const useRegister = () => {
 
     setCurrentUser(newUser)
     setIsLoggedIn(true)
-    navigate('/welcome', { replace: true })
+    void router.push('/welcome')
   }
 
   const handleBlur = useCallback((e: ChangeEvent<HTMLInputElement>) => {

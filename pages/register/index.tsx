@@ -3,7 +3,7 @@ import { Footer } from '../../components/footer/Footer'
 import { Header } from '../../components/header/Header'
 import { RegisterForm } from '../../components/register-form/RegisterForm'
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
   return (
     <Container>
       <Header>Register</Header>
@@ -12,3 +12,5 @@ export const RegisterPage = () => {
     </Container>
   )
 }
+
+export default RegisterPage
