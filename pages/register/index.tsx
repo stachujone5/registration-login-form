@@ -8,7 +8,7 @@ const RegisterPage = () => {
     <Container>
       <Header>Register</Header>
       <RegisterForm />
-      <Footer infoText='Already have an account?' btnText='Sign in' to='/login' />
+      <Footer infoText='Already have an account?' btnText='Sign in' href='/login' />
     </Container>
   )
 }

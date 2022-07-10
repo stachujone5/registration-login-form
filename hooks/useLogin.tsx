@@ -1,5 +1,5 @@
+import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { DEFAULT_LOGIN_VALUES } from '../constants/defaults'
 
@@ -13,7 +13,7 @@ export const useLogin = () => {
   const [isLoginError, setIsLoginError] = useState(false)
 
   const { setIsLoggedIn } = useUserContext()
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const handleLoginChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setLoginValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
@@ -26,7 +26,7 @@ export const useLogin = () => {
     setIsLoggedIn(true)
 
     setIsLoginError(false)
-    navigate('/welcome', { replace: true })
+    void router.push('/welcome')
   }
 
   return { handleLogin, handleLoginChange, isLoginError }

@@ -1,10 +1,14 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'
 
-export default function Document() {
+const Document = () => {
   return (
     <Html>
-      <Head />
+      <Head>
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' />
+        <link href='https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap' rel='stylesheet' />
+      </Head>
       <body>
         <Main />
         <NextScript />
@@ -12,3 +16,5 @@ export default function Document() {
     </Html>
   )
 }
+
+export default Document

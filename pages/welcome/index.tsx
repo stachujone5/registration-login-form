@@ -6,7 +6,7 @@ import { useUserContext } from '../../hooks/useUserContext'
 
 import classes from './WelcomePage.module.scss'
 
-export const WelcomePage = () => {
+const WelcomePage = () => {
   const { setIsLoggedIn, currentUser, setCurrentUser } = useUserContext()
 
   const router = useRouter()
@@ -27,3 +27,5 @@ export const WelcomePage = () => {
     </Container>
   )
 }
+
+export default WelcomePage

@@ -11,7 +11,7 @@ interface Props extends PropsChildren {
   readonly onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
-export const Button = ({ children, type = 'button', onClick, className = '' }: Props) => {
+export const Button = ({ children, type = 'button', onClick, className }: Props) => {
   const btnClasses = clsx(className, classes.btn)
 
   return (

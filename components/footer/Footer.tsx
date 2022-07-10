@@ -5,15 +5,15 @@ import classes from './Footer.module.scss'
 interface Props {
   readonly infoText: string
   readonly btnText: string
-  readonly to: string
+  readonly href: string
 }
 
-export const Footer = ({ infoText, btnText, to }: Props) => {
+export const Footer = ({ infoText, btnText, href }: Props) => {
   return (
     <>
       <p className={classes.info}>{infoText}</p>
-      <Link href={to} className={classes.signin}>
-        {btnText}
+      <Link href={href}>
+        <a className={classes.signin}>{btnText} </a>
       </Link>
     </>
   )

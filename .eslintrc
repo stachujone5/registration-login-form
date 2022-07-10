@@ -3,6 +3,7 @@
   "parserOptions": {
     "project": "tsconfig.json"
   },
+  "parser": "@typescript-eslint/parser",
   "plugins": ["@typeofweb"],
   "extends": ["next/core-web-vitals", "plugin:@typeofweb/recommended"],
   "rules": {
@@ -15,5 +16,13 @@
         "html": true
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["next.config.js"],
+      "rules": {
+        "unicorn/prefer-module": 0
+      }
+    }
+  ]
 }
