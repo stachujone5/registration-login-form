@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import type { Context } from 'react'
 
-export const getUseSafeContext = <T>(context: Context<T | null>) => {
+export const getSafeContext = <T>(context: Context<T | null>) => {
   return () => {
     const ctx = useContext(context)
 

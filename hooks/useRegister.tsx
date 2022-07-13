@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
 
 import { DEFAULT_REGISTER_VALUES, DEFAULT_TOUCHED } from '../constants/defaults'
+import { getStorage, setStorage } from '../helpers/handleStorage'
 import { validate } from '../helpers/validate'
 
 import { useUserContext } from './useUserContext'
@@ -19,22 +20,29 @@ export const useRegister = () => {
 
   const errors = validate(values)
 
+  const handleBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
+    setIsTouched(prevIsTouched => ({ ...prevIsTouched, [e.target.name]: true }))
+
+    setValues(prevValues => ({ ...prevValues, [e.target.name]: e.target.value }))
+  }, [])
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     setIsTouched({ username: true, password: true, passwordRepeat: true, email: true })
+
     if (errors.emailError || errors.passwordError || errors.passwordRepeatError || errors.usernameError) return
 
     const newUser: User = { username: values.username, password: values.password, email: values.email }
+
+    const storage = getStorage()
+
+    storage ? setStorage([...storage, newUser]) : setStorage([newUser])
 
     setCurrentUser(newUser)
     setIsLoggedIn(true)
     void router.push('/welcome')
   }
-
-  const handleBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
-    setIsTouched(prevIsTouched => ({ ...prevIsTouched, [e.target.name]: true }))
-    setValues(prevValues => ({ ...prevValues, [e.target.name]: e.target.value }))
-  }, [])
 
   return { errors, handleBlur, isTouched, handleSubmit }
 }

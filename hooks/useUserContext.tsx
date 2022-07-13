@@ -1,4 +1,4 @@
 import { UserContext } from '../contexts/UserContext'
-import { getUseSafeContext } from '../helpers/getUseSafeContext'
+import { getSafeContext } from '../helpers/getSafeContext'
 
-export const useUserContext = getUseSafeContext(UserContext)
+export const useUserContext = getSafeContext(UserContext)
