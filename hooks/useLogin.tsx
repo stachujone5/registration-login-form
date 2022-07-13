@@ -13,13 +13,14 @@ export const useLogin = () => {
   const [isLoginError, setIsLoginError] = useState(false)
 
   const { setIsLoggedIn } = useUserContext()
+
   const router = useRouter()
 
-  const handleLoginChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+  const handleBlur = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setLoginValues(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
   }, [])
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(loginValues)
 
@@ -29,5 +30,5 @@ export const useLogin = () => {
     void router.push('/welcome')
   }
 
-  return { handleLogin, handleLoginChange, isLoginError }
+  return { handleSubmit, handleBlur, isLoginError }
 }
