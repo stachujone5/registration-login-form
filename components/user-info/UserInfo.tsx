@@ -19,14 +19,16 @@ export const UserInfo = () => {
   return (
     <div>
       <h1 className={classes.welcome}>Welcome</h1>
-      <h2 className={classes.username}>{currentUser?.username}</h2>
+      <h2 className={classes.username}>{currentUser.username}</h2>
       <p className={classes.center}>Account created {creationDate} ago.</p>
-      <Button onClick={deleteUser} className={classes.btn}>
-        Delete account
-      </Button>
-      <Button onClick={handleLogout} className={classes.btn}>
-        Sign out
-      </Button>
+      <div className={classes.flex}>
+        <Button onClick={deleteUser} className={classes.btn}>
+          Delete account
+        </Button>
+        <Button onClick={handleLogout} className={classes.btn}>
+          Sign out
+        </Button>
+      </div>
     </div>
   )
 }

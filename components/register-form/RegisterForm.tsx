@@ -7,6 +7,8 @@ import { ErrorMessage } from '../error-message/ErrorMessage'
 import { Input } from '../input/Input'
 import { Label } from '../label/Label'
 
+import classes from './RegisterForm.module.scss'
+
 import type { Values } from '../../types/types'
 
 type InputName = keyof Values
@@ -39,7 +41,9 @@ export const RegisterForm = () => {
       <Input type='email' placeholder='Enter email' {...registerInput('email')} />
       {emailError && isTouched.email && <ErrorMessage>{emailError}</ErrorMessage>}
 
-      <Button type='submit'>Sign up</Button>
+      <Button type='submit' className={classes.btn}>
+        Sign up
+      </Button>
     </form>
   )
 }

@@ -7,6 +7,8 @@ import { ErrorMessage } from '../error-message/ErrorMessage'
 import { Input } from '../input/Input'
 import { Label } from '../label/Label'
 
+import classes from './LoginForm.module.scss'
+
 import type { LoginValues } from '../../types/types'
 
 type InputName = keyof LoginValues
@@ -23,7 +25,9 @@ export const LoginForm = () => {
       <Label htmlFor='password' text='Password' icon={PASSWORD_ICON} />
       <Input type='password' placeholder='Enter password' {...loginInput('password')} />
       {isLoginError && <ErrorMessage>Your username or password is incorrect.</ErrorMessage>}
-      <Button type='submit'>Sign in</Button>
+      <Button type='submit' className={classes.btn}>
+        Sign in
+      </Button>
     </form>
   )
 }
