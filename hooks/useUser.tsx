@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
+import { useCallback } from 'react'
 
-import { getStorage, isInStorage, setStorage } from '../helpers/handleStorage'
+import { getStorage, setStorage } from '../helpers/handleStorage'
 
 import { useUserContext } from './useUserContext'
 
@@ -11,7 +12,47 @@ export const useUser = () => {
 
   const router = useRouter()
 
-  const deleteUser = () => {
+  const handleLogin = useCallback(
+    (values: LoginValues) => {
+      const user = getStorage()?.find(u => u.password === values.password && u.username === values.username)
+
+      if (user) {
+        setIsLoggedIn(true)
+        setCurrentUser(user)
+        void router.push('/welcome')
+        return user
+      }
+    },
+    [router, setCurrentUser, setIsLoggedIn]
+  )
+
+  const handleLogout = useCallback(() => {
+    setIsLoggedIn(false)
+    setCurrentUser(null)
+    void router.push('/login')
+  }, [router, setCurrentUser, setIsLoggedIn])
+
+  const createUser = useCallback(
+    (values: Values) => {
+      const newUser: User = {
+        username: values.username,
+        password: values.password,
+        email: values.email,
+        createdAt: new Date()
+      }
+
+      const storage = getStorage()
+
+      storage ? setStorage([...storage, newUser]) : setStorage([newUser])
+
+      setCurrentUser(newUser)
+      setIsLoggedIn(true)
+      void router.push('/welcome')
+    },
+    [router, setCurrentUser, setIsLoggedIn]
+  )
+
+  const deleteUser = useCallback(() => {
     if (!currentUser) return
 
     const newUsers = getStorage()?.filter(
@@ -20,43 +61,9 @@ export const useUser = () => {
 
     if (newUsers) {
       setStorage(newUsers)
-      handleSignOut()
+      handleLogout()
     }
-  }
+  }, [currentUser, handleLogout])
 
-  const handleSignOut = () => {
-    setIsLoggedIn(false)
-    setCurrentUser(null)
-    void router.push('/login')
-  }
-
-  const createUser = (values: Values) => {
-    const newUser: User = {
-      username: values.username,
-      password: values.password,
-      email: values.email,
-      createdAt: new Date()
-    }
-
-    const storage = getStorage()
-
-    storage ? setStorage([...storage, newUser]) : setStorage([newUser])
-
-    setCurrentUser(newUser)
-    setIsLoggedIn(true)
-    void router.push('/welcome')
-  }
-
-  const handleLogin = (values: LoginValues) => {
-    const user = isInStorage({ username: values.username, password: values.password })
-
-    if (user) {
-      setIsLoggedIn(true)
-      setCurrentUser(user)
-      void router.push('/welcome')
-      return user
-    }
-  }
-
-  return { deleteUser, handleSignOut, createUser, handleLogin }
+  return { deleteUser, handleLogout, createUser, handleLogin }
 }

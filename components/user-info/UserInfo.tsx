@@ -8,7 +8,7 @@ import classes from './UserInfo.module.scss'
 
 export const UserInfo = () => {
   const { currentUser } = useUserContext()
-  const { deleteUser, handleSignOut } = useUser()
+  const { deleteUser, handleLogout } = useUser()
 
   if (!currentUser) {
     return null
@@ -24,7 +24,7 @@ export const UserInfo = () => {
       <Button onClick={deleteUser} className={classes.btn}>
         Delete account
       </Button>
-      <Button onClick={handleSignOut} className={classes.btn}>
+      <Button onClick={handleLogout} className={classes.btn}>
         Sign out
       </Button>
     </div>

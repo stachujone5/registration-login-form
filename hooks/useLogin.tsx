@@ -17,15 +17,18 @@ export const useLogin = () => {
     setLoginValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }, [])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
 
-    const loggedUser = handleLogin(loginValues)
+      const loggedUser = handleLogin(loginValues)
 
-    if (!loggedUser) {
-      setIsLoginError(true)
-    }
-  }
+      if (!loggedUser) {
+        setIsLoginError(true)
+      }
+    },
+    [handleLogin, loginValues]
+  )
 
   return { handleSubmit, handleBlur, isLoginError }
 }

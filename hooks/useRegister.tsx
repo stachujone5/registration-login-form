@@ -22,15 +22,18 @@ export const useRegister = () => {
     setValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }, [])
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
 
-    setIsTouched({ username: true, password: true, passwordRepeat: true, email: true })
+      setIsTouched({ username: true, password: true, passwordRepeat: true, email: true })
 
-    if (errors.emailError || errors.passwordError || errors.passwordRepeatError || errors.usernameError) return
+      if (errors.emailError || errors.passwordError || errors.passwordRepeatError || errors.usernameError) return
 
-    createUser(values)
-  }
+      createUser(values)
+    },
+    [errors, values, createUser]
+  )
 
   return { errors, handleBlur, isTouched, handleSubmit }
 }
