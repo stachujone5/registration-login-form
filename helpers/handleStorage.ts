@@ -7,13 +7,9 @@ export const getStorage = (): readonly User[] | null => {
 }
 
 export const setStorage = (value: readonly User[]) => {
-  const stringValue = JSON.stringify(value)
-
-  localStorage.setItem('users', stringValue)
+  localStorage.setItem('users', JSON.stringify(value))
 }
 
 export const isInStorage = ({ password, username }: LoginValues) => {
-  const storage = getStorage()
-
-  return storage?.find(u => u.password === password && u.username === username)
+  return getStorage()?.find(u => u.password === password && u.username === username)
 }

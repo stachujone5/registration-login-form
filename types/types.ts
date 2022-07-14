@@ -8,6 +8,7 @@ export interface User {
   readonly username: string
   readonly password: string
   readonly email: string
+  readonly createdAt: Date
 }
 
 export interface Values {
