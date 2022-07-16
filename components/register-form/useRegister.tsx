@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 
 import { useUser } from '../../hooks/useUser'
+
 import { validateRegister } from './validateRegister'
 
 import type { RegisterValues } from '../../types/types'
