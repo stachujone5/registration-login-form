@@ -1,9 +1,9 @@
-# Registration / Login Form build in react
+# Registration / Login Form build in Next
 
-My first react app built to practice hooks, context api, react router and more.
-Login data is stored in localstorage.
+App built with Next.js
+Right now users are stored in localStorage, later I'm planning to implement backend logic to store users on a server.
 
-## [Live demo](https://stachujone5.github.io/registration-login-form)
+## [Live demo](https://registration-login-form-401bjn1lz-stachujone5.vercel.app/)
 
 ### `npm install`
 
