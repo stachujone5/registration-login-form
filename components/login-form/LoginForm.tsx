@@ -24,7 +24,7 @@ export const LoginForm = () => {
       <Input type='text' placeholder='Enter username or email' {...loginInput('login')} />
       <Label htmlFor='password' text='Password' icon={PASSWORD_ICON} />
       <Input type='password' placeholder='Enter password' {...loginInput('password')} />
-      {isLoginError && <ErrorMessage>Your username or password is incorrect.</ErrorMessage>}
+      {isLoginError && <ErrorMessage>Incorrect login credentials.</ErrorMessage>}
       <Button type='submit' className={classes.btn}>
         Sign in
       </Button>
