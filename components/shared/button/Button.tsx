@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 import classes from './Button.module.scss'
 
-import type { PropsChildren } from '../../types/types'
+import type { PropsChildren } from '../../../types/types'
 import type { MouseEventHandler } from 'react'
 
 interface Props extends PropsChildren {

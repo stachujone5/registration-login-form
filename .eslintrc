@@ -5,7 +5,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typeofweb"],
-  "extends": ["next/core-web-vitals", "plugin:@typeofweb/recommended"],
+  "extends": ["plugin:@typeofweb/recommended", "next/core-web-vitals"],
   "rules": {
     "@typeofweb/capitalize-modules": "off",
     "import/no-default-export": 0,
@@ -17,12 +17,5 @@
       }
     ]
   },
-  "overrides": [
-    {
-      "files": ["next.config.js"],
-      "rules": {
-        "unicorn/prefer-module": 0
-      }
-    }
-  ]
+  "ignorePatterns": ["next.config.js"]
 }

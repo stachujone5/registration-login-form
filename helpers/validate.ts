@@ -15,7 +15,7 @@ export const validate = (values: Values) => {
     errors.usernameError = 'Username is too short, min. 5 characters'
   }
 
-  if (!values.password?.trim().length) {
+  if (!values.password.trim().length) {
     errors.passwordError = 'Password is required'
   }
 
@@ -23,7 +23,7 @@ export const validate = (values: Values) => {
     errors.passwordError = 'Password is too short, min. 8 characters'
   }
 
-  if (!values.password?.length && !values.passwordRepeat?.length) {
+  if (!values.password.length && !values.passwordRepeat.length) {
     errors.passwordRepeatError = "Passwords don't match"
   }
 

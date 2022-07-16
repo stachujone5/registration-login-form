@@ -8,7 +8,7 @@ import { useUserContext } from './useUserContext'
 import type { LoginValues, User, Values } from '../types/types'
 
 export const useUser = () => {
-  const { setIsLoggedIn, setCurrentUser, currentUser } = useUserContext()
+  const { setCurrentUser, currentUser } = useUserContext()
 
   const router = useRouter()
 
@@ -19,20 +19,18 @@ export const useUser = () => {
       )
 
       if (user) {
-        setIsLoggedIn(true)
         setCurrentUser(user)
-        void router.push('/welcome')
+        void router.replace('/welcome')
         return user
       }
     },
-    [router, setCurrentUser, setIsLoggedIn]
+    [router, setCurrentUser]
   )
 
   const handleLogout = useCallback(() => {
-    setIsLoggedIn(false)
     setCurrentUser(null)
-    void router.push('/login')
-  }, [router, setCurrentUser, setIsLoggedIn])
+    void router.replace('/login')
+  }, [router, setCurrentUser])
 
   const createUser = useCallback(
     (values: Values) => {
@@ -48,10 +46,9 @@ export const useUser = () => {
       storage ? setStorage([...storage, newUser]) : setStorage([newUser])
 
       setCurrentUser(newUser)
-      setIsLoggedIn(true)
-      void router.push('/welcome')
+      void router.replace('/welcome')
     },
-    [router, setCurrentUser, setIsLoggedIn]
+    [router, setCurrentUser]
   )
 
   const deleteUser = useCallback(() => {

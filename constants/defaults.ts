@@ -4,24 +4,24 @@ export const DEFAULT_REGISTER_VALUES: Values = {
   username: '',
   password: '',
   passwordRepeat: '',
-  email: '',
+  email: ''
 }
 
 export const DEFAULT_ERRORS: Errors = {
   usernameError: '',
   passwordError: '',
   passwordRepeatError: '',
-  emailError: '',
+  emailError: ''
 }
 
 export const DEFAULT_TOUCHED: Touched = {
   username: false,
   password: false,
   passwordRepeat: false,
-  email: false,
+  email: false
 }
 
 export const DEFAULT_LOGIN_VALUES: LoginValues = {
-  username: '',
-  password: '',
+  login: '',
+  password: ''
 }

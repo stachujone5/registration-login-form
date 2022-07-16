@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true
-}
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  //eslint-disable-next-line -- next config - docs example
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/register',
+        permanent: true
+      }
+    ]
+  }
+}

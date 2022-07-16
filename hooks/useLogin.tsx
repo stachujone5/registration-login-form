@@ -4,11 +4,10 @@ import { DEFAULT_LOGIN_VALUES } from '../constants/defaults'
 
 import { useUser } from './useUser'
 
-import type { LoginValues } from '../types/types'
 import type { FormEvent, FocusEvent } from 'react'
 
 export const useLogin = () => {
-  const [loginValues, setLoginValues] = useState<LoginValues>(DEFAULT_LOGIN_VALUES)
+  const [loginValues, setLoginValues] = useState(DEFAULT_LOGIN_VALUES)
   const [isLoginError, setIsLoginError] = useState(false)
 
   const { handleLogin } = useUser()

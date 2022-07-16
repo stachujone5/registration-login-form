@@ -2,10 +2,10 @@ import { useCallback } from 'react'
 
 import { PASSWORD_ICON, USERNAME_ICON } from '../../constants/icons'
 import { useLogin } from '../../hooks/useLogin'
-import { Button } from '../button/Button'
-import { ErrorMessage } from '../error-message/ErrorMessage'
-import { Input } from '../input/Input'
-import { Label } from '../label/Label'
+import { Button } from '../shared/button/Button'
+import { ErrorMessage } from '../shared/error-message/ErrorMessage'
+import { Input } from '../shared/input/Input'
+import { Label } from '../shared/label/Label'
 
 import classes from './LoginForm.module.scss'
 

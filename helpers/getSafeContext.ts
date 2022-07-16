@@ -7,7 +7,7 @@ export const getSafeContext = <T>(context: Context<T | null>) => {
     const ctx = useContext(context)
 
     if (!ctx) {
-      throw new Error('Missing data!')
+      throw new Error('Missing context data!')
     }
 
     return ctx

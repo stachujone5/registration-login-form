@@ -1,6 +1,6 @@
 import classes from './Header.module.scss'
 
-import type { PropsChildren } from '../../types/types'
+import type { PropsChildren } from '../../../types/types'
 
 export const Header = ({ children }: PropsChildren) => {
   return (
