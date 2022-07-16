@@ -1,5 +1,7 @@
 import { createContext, useState } from 'react'
 
+import { getSafeContext } from '../helpers/getSafeContext'
+
 import type { PropsChildren, User } from '../types/types'
 import type { Dispatch, SetStateAction } from 'react'
 
@@ -8,14 +10,12 @@ interface UserCtx {
   readonly setCurrentUser: Dispatch<SetStateAction<UserCtx['currentUser']>>
 }
 
-export const UserContext = createContext<UserCtx | null>(null)
+const UserContext = createContext<UserCtx | null>(null)
 
 export const UserProvider = ({ children }: PropsChildren) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
-  return (
-    <UserContext.Provider value={{setCurrentUser, currentUser }}>
-      {children}
-    </UserContext.Provider>
-  )
+  return <UserContext.Provider value={{ setCurrentUser, currentUser }}>{children}</UserContext.Provider>
 }
+
+export const useUserContext = getSafeContext(UserContext)

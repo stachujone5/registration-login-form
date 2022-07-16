@@ -1,13 +1,18 @@
-import { EMAIL_REGEX } from '../constants/constants'
-import { DEFAULT_ERRORS } from '../constants/defaults'
+import { getStorage } from '../../helpers/handleStorage'
 
-import { getStorage } from './handleStorage'
+import type { RegisterValues } from '../../types/types'
 
-import type { Values, Errors } from '../types/types'
-import type { Mutable } from '../types/utils'
+const EMAIL_REGEX = new RegExp(
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+)
 
-export const validate = (values: Values) => {
-  const errors: Mutable<Errors> = { ...DEFAULT_ERRORS }
+export const validateRegister = (values: RegisterValues) => {
+  const errors = {
+    usernameError: '',
+    passwordError: '',
+    passwordRepeatError: '',
+    emailError: ''
+  }
 
   const storage = getStorage()
 

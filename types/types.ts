@@ -11,25 +11,11 @@ export interface User {
   readonly createdAt: Date
 }
 
-export interface Values {
+export interface RegisterValues {
   readonly username: string
   readonly password: string
   readonly passwordRepeat: string
   readonly email: string
-}
-
-export interface Errors {
-  readonly usernameError: string
-  readonly passwordError: string
-  readonly passwordRepeatError: string
-  readonly emailError: string
-}
-
-export interface Touched {
-  readonly username: boolean
-  readonly password: boolean
-  readonly passwordRepeat: boolean
-  readonly email: boolean
 }
 
 export interface LoginValues {

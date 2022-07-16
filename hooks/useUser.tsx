@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
 
+import { useUserContext } from '../contexts/UserContext'
 import { getStorage, setStorage } from '../helpers/handleStorage'
 
-import { useUserContext } from './useUserContext'
-
-import type { LoginValues, User, Values } from '../types/types'
+import type { LoginValues, User, RegisterValues } from '../types/types'
 
 export const useUser = () => {
   const { setCurrentUser, currentUser } = useUserContext()
@@ -33,7 +32,7 @@ export const useUser = () => {
   }, [router, setCurrentUser])
 
   const createUser = useCallback(
-    (values: Values) => {
+    (values: RegisterValues) => {
       const newUser: User = {
         username: values.username,
         password: values.password,

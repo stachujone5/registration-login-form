@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 import { Container } from '../../components/shared/container/Container'
 import { UserInfo } from '../../components/user-info/UserInfo'
-import { useUserContext } from '../../hooks/useUserContext'
+import { useUserContext } from '../../contexts/UserContext'
 
 const WelcomePage = () => {
   const { currentUser } = useUserContext()

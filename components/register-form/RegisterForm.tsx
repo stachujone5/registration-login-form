@@ -1,17 +1,17 @@
 import { useCallback } from 'react'
 
 import { EMAIL_ICON, PASSWORD_ICON, USERNAME_ICON } from '../../constants/icons'
-import { useRegister } from '../../hooks/useRegister'
 import { Button } from '../shared/button/Button'
 import { ErrorMessage } from '../shared/error-message/ErrorMessage'
 import { Input } from '../shared/input/Input'
 import { Label } from '../shared/label/Label'
 
 import classes from './RegisterForm.module.scss'
+import { useRegister } from './useRegister'
 
-import type { Values } from '../../types/types'
+import type { RegisterValues } from '../../types/types'
 
-type InputName = keyof Values
+type InputName = keyof RegisterValues
 
 export const RegisterForm = () => {
   const {

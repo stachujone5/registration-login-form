@@ -1,13 +1,13 @@
 import { useCallback } from 'react'
 
 import { PASSWORD_ICON, USERNAME_ICON } from '../../constants/icons'
-import { useLogin } from '../../hooks/useLogin'
 import { Button } from '../shared/button/Button'
 import { ErrorMessage } from '../shared/error-message/ErrorMessage'
 import { Input } from '../shared/input/Input'
 import { Label } from '../shared/label/Label'
 
 import classes from './LoginForm.module.scss'
+import { useLogin } from './useLogin'
 
 import type { LoginValues } from '../../types/types'
 

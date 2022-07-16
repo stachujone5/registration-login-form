@@ -1,18 +1,27 @@
 import { useCallback, useState } from 'react'
 
-import { DEFAULT_REGISTER_VALUES, DEFAULT_TOUCHED } from '../constants/defaults'
-import { validate } from '../helpers/validate'
+import { useUser } from '../../hooks/useUser'
+import { validateRegister } from './validateRegister'
 
-import { useUser } from './useUser'
-
+import type { RegisterValues } from '../../types/types'
 import type { FormEvent, FocusEvent } from 'react'
 
 export const useRegister = () => {
-  const [isTouched, setIsTouched] = useState(DEFAULT_TOUCHED)
-  const [values, setValues] = useState(DEFAULT_REGISTER_VALUES)
-  const errors = validate(values)
-
+  const [isTouched, setIsTouched] = useState({
+    username: false,
+    password: false,
+    passwordRepeat: false,
+    email: false
+  })
+  const [values, setValues] = useState<RegisterValues>({
+    username: '',
+    password: '',
+    passwordRepeat: '',
+    email: ''
+  })
   const { createUser } = useUser()
+
+  const errors = validateRegister(values)
 
   const handleBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
     setIsTouched(prev => ({ ...prev, [e.target.name]: true }))
@@ -27,7 +36,12 @@ export const useRegister = () => {
       setIsTouched({ username: true, password: true, passwordRepeat: true, email: true })
 
       if (!errors.emailError && !errors.passwordError && !errors.passwordRepeatError && !errors.usernameError) {
-        setIsTouched(DEFAULT_TOUCHED)
+        setIsTouched({
+          username: false,
+          password: false,
+          passwordRepeat: false,
+          email: false
+        })
         createUser(values)
       }
     },

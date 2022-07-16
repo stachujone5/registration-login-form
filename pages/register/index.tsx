@@ -7,14 +7,14 @@ import { Header } from '../../components/shared/header/Header'
 
 const RegisterPage = () => {
   return (
-      <Container>
-        <Head>
-          <title>Register</title>
-        </Head>
-        <Header>Register</Header>
-        <RegisterForm />
-        <Footer infoText='Already have an account?' btnText='Sign in' href='/login' />
-      </Container>
+    <Container>
+      <Head>
+        <title>Register</title>
+      </Head>
+      <Header>Register</Header>
+      <RegisterForm />
+      <Footer infoText='Already have an account?' btnText='Sign in' href='/login' />
+    </Container>
   )
 }
 

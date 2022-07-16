@@ -1,7 +1,7 @@
 import { formatDistance } from 'date-fns'
 
+import { useUserContext } from '../../contexts/UserContext'
 import { useUser } from '../../hooks/useUser'
-import { useUserContext } from '../../hooks/useUserContext'
 import { Button } from '../shared/button/Button'
 
 import classes from './UserInfo.module.scss'
