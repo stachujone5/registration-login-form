@@ -33,6 +33,6 @@ export interface Touched {
 }
 
 export interface LoginValues {
-  readonly username: string
+  readonly login: string
   readonly password: string
 }

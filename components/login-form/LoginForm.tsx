@@ -20,8 +20,8 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Label htmlFor='username' text='Username' icon={USERNAME_ICON} />
-      <Input type='text' placeholder='Enter username' {...loginInput('username')} />
+      <Label htmlFor='login' text='Username or Email' icon={USERNAME_ICON} />
+      <Input type='text' placeholder='Enter username or email' {...loginInput('login')} />
       <Label htmlFor='password' text='Password' icon={PASSWORD_ICON} />
       <Input type='password' placeholder='Enter password' {...loginInput('password')} />
       {isLoginError && <ErrorMessage>Your username or password is incorrect.</ErrorMessage>}

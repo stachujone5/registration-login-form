@@ -21,14 +21,12 @@ export const UserInfo = () => {
       <h1 className={classes.welcome}>Welcome</h1>
       <h2 className={classes.username}>{currentUser.username}</h2>
       <p className={classes.center}>Account created {creationDate} ago.</p>
-      <div className={classes.flex}>
-        <Button onClick={deleteUser} className={classes.btn}>
-          Delete account
-        </Button>
-        <Button onClick={handleLogout} className={classes.btn}>
-          Sign out
-        </Button>
-      </div>
+      <Button onClick={deleteUser} className={classes.btn}>
+        Delete account
+      </Button>
+      <Button onClick={handleLogout} className={classes.btn}>
+        Sign out
+      </Button>
     </div>
   )
 }

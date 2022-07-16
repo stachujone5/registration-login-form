@@ -14,7 +14,9 @@ export const useUser = () => {
 
   const handleLogin = useCallback(
     (values: LoginValues) => {
-      const user = getStorage()?.find(u => u.password === values.password && u.username === values.username)
+      const user = getStorage()?.find(
+        u => u.password === values.password && (u.username === values.login || u.email === values.login)
+      )
 
       if (user) {
         setIsLoggedIn(true)
