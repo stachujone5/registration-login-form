@@ -2,7 +2,6 @@
 
 module.exports = {
   reactStrictMode: true,
-  //eslint-disable-next-line -- next config - docs example
   async redirects() {
     return [
       {

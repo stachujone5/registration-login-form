@@ -1,5 +1,5 @@
 {
-  "homepage": "https://registration-login-form-401bjn1lz-stachujone5.vercel.app",
+  "homepage": "https://registration-login-form.vercel.app",
   "name": "registration-login-form",
   "version": "1.0.0",
   "private": true,
@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@typeofweb/eslint-plugin": "^0.3.0",
-    "@types/jest": "^28.1.4",
     "@types/node": "^18.0.0",
     "@types/node-sass": "^4.11.3",
     "@types/react": "^18.0.14",
