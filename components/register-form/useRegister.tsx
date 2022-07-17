@@ -14,7 +14,7 @@ export const useRegister = () => {
     passwordRepeat: false,
     email: false
   })
-  const [values, setValues] = useState<RegisterValues>({
+  const [registerValues, setRegisterValues] = useState<RegisterValues>({
     username: '',
     password: '',
     passwordRepeat: '',
@@ -22,12 +22,12 @@ export const useRegister = () => {
   })
   const { createUser } = useUser()
 
-  const errors = validateRegister(values)
+  const errors = validateRegister(registerValues)
 
   const handleBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
     setIsTouched(prev => ({ ...prev, [e.target.name]: true }))
 
-    setValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    setRegisterValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }, [])
 
   const handleSubmit = useCallback(
@@ -43,10 +43,10 @@ export const useRegister = () => {
           passwordRepeat: false,
           email: false
         })
-        createUser(values)
+        createUser(registerValues)
       }
     },
-    [errors, values, createUser]
+    [errors, registerValues, createUser]
   )
 
   return { errors, handleBlur, isTouched, handleSubmit }
