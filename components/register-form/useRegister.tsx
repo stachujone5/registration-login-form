@@ -4,8 +4,14 @@ import { useUser } from '../../hooks/useUser'
 
 import { validateRegister } from './validateRegister'
 
-import type { RegisterValues } from '../../types/types'
 import type { FormEvent, FocusEvent } from 'react'
+
+export interface RegisterValues {
+  readonly username: string
+  readonly password: string
+  readonly passwordRepeat: string
+  readonly email: string
+}
 
 export const useRegister = () => {
   const [isTouched, setIsTouched] = useState({

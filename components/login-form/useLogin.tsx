@@ -2,8 +2,12 @@ import { useCallback, useState } from 'react'
 
 import { useUser } from '../../hooks/useUser'
 
-import type { LoginValues } from '../../types/types'
 import type { FormEvent, FocusEvent } from 'react'
+
+export interface LoginValues {
+  readonly login: string
+  readonly password: string
+}
 
 export const useLogin = () => {
   const [loginValues, setLoginValues] = useState<LoginValues>({

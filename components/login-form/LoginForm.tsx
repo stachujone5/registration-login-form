@@ -9,7 +9,7 @@ import { Label } from '../shared/label/Label'
 import classes from './LoginForm.module.scss'
 import { useLogin } from './useLogin'
 
-import type { LoginValues } from '../../types/types'
+import type { LoginValues } from './useLogin'
 
 type InputName = keyof LoginValues
 

@@ -2,8 +2,15 @@ import { createContext, useState } from 'react'
 
 import { getSafeContext } from '../helpers/getSafeContext'
 
-import type { PropsChildren, User } from '../types/types'
+import type { PropsChildren } from '../types/types'
 import type { Dispatch, SetStateAction } from 'react'
+
+export interface User {
+  readonly username: string
+  readonly password: string
+  readonly email: string
+  readonly createdAt: Date
+}
 
 interface UserCtx {
   readonly currentUser: User | null

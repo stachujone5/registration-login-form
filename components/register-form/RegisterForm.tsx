@@ -9,7 +9,7 @@ import { Label } from '../shared/label/Label'
 import classes from './RegisterForm.module.scss'
 import { useRegister } from './useRegister'
 
-import type { RegisterValues } from '../../types/types'
+import type { RegisterValues } from './useRegister'
 
 type InputName = keyof RegisterValues
 

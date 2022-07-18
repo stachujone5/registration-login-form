@@ -4,7 +4,9 @@ import { useCallback } from 'react'
 import { useUserContext } from '../contexts/UserContext'
 import { getStorage, setStorage } from '../helpers/handleStorage'
 
-import type { LoginValues, User, RegisterValues } from '../types/types'
+import type { LoginValues } from '../components/login-form/useLogin'
+import type { RegisterValues } from '../components/register-form/useRegister'
+import type { User } from '../contexts/UserContext'
 
 export const useUser = () => {
   const { setCurrentUser, currentUser } = useUserContext()
@@ -13,7 +15,7 @@ export const useUser = () => {
 
   const handleLogin = useCallback(
     (values: LoginValues) => {
-      const user = getStorage()?.find(
+      const user = getStorage<readonly User[]>('users')?.find(
         u => u.password === values.password && (u.username === values.login || u.email === values.login)
       )
 
@@ -40,7 +42,7 @@ export const useUser = () => {
         createdAt: new Date()
       }
 
-      const storage = getStorage()
+      const storage = getStorage<readonly User[]>('users')
 
       storage ? setStorage([...storage, newUser]) : setStorage([newUser])
 
@@ -53,7 +55,7 @@ export const useUser = () => {
   const deleteUser = useCallback(() => {
     if (!currentUser) return
 
-    const newUsers = getStorage()?.filter(
+    const newUsers = getStorage<readonly User[]>('users')?.filter(
       u => u.username !== currentUser.username && u.password !== currentUser.password
     )
 
