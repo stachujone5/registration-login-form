@@ -1,6 +1,7 @@
 import { getStorage } from '../../helpers/handleStorage'
 
-import type { RegisterValues } from '../../types/types'
+import type { User } from '../../contexts/UserContext'
+import type { RegisterValues } from './useRegister'
 
 const EMAIL_REGEX = new RegExp(
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -14,7 +15,7 @@ export const validateRegister = (values: RegisterValues) => {
     emailError: ''
   }
 
-  const storage = getStorage()
+  const storage = getStorage<readonly User[]>('users')
 
   if (values.username.trim().length < 5) {
     errors.usernameError = 'Username is too short, min. 5 characters'
